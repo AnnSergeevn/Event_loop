@@ -15,22 +15,10 @@ async def get_people(person_id, http_session):
     return json_data
 
 
-# async def get_homeworld(URL_HW) -> str:
-#     hws = []
-#     # async with Session() as db_session:
-#     #     async with db_session.get(URL_HW) as response:
-#     #         response = await response.json()
-#     #     await db_session.close()
-#     hws.append(URL_HW)
-#     print(hws)
-#     return ', '.join(hws)
-
-
 async def get_films(url_films: list) -> str:
     films = []
     for film in url_films:
         films.append(film)
-        #print(f"films {films}")
     return ', '.join(films)
 
 
@@ -45,7 +33,6 @@ async def insert(jsons_list):
     async with Session() as db_session:
         people_orm = []
         for json_item in jsons_list:
-            #print(json_item['eye_color'])
             orm_objects = SwapiPeople(
                     birth_year=(json_item['birth_year'] if 'birth_year' in json_item else None),
                     eye_color=(json_item['eye_color'] if 'eye_color' in json_item else None),
